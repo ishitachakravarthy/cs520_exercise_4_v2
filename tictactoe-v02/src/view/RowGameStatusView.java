@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 import model.Player;
 import model.RowGameModel;
-
+import logger.Logger;
 
 public class RowGameStatusView implements RowGameView {
     public JTextArea playerturn = new JTextArea();
@@ -21,15 +21,14 @@ public class RowGameStatusView implements RowGameView {
     }
 
     public void update(RowGameModel gameModel) {
-	if (gameModel.getFinalResult() == null) {
-	    if(gameModel.getMovesLeft()%2 == 1) {
-	        playerturn.setText("'X': " + Player.PLAYER_1.getLabel());
-	    } else{
-		playerturn.setText("'O': " + Player.PLAYER_2.getLabel());
-	    }
-	}
-	else {
-	    playerturn.setText(gameModel.getFinalResult());
-	}
+        if (gameModel.getFinalResult() == null) {
+            if (gameModel.getMovesLeft() % 2 == 1) {
+                playerturn.setText("'X': " + Player.PLAYER_1.getLabel());
+            } else {
+                playerturn.setText("'O': " + Player.PLAYER_2.getLabel());
+            }
+        } else {
+            playerturn.setText(gameModel.getFinalResult());
+        }
     }
 }
